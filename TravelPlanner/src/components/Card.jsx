@@ -13,13 +13,13 @@ const Card = ({id, image, info, price, name, removeTour}) => {
         <img src={image} className="image"/>
         <div className="tour-info">
             <div className="tour-details">
-            <h4 className="tour-price">{price}</h4>
+            <h4 className="tour-price">₹ {price}</h4>
             <h4 className="tour-name">{name}</h4>
         </div>
         <div className="description">
             {description}
             <span className="read-more" onClick={readmoreHandler}>
-                {readmore ? 'Show less': 'Read more'}
+                {readmore ? ' Show less': ' Read more'}
             </span>
         </div>
         </div>
