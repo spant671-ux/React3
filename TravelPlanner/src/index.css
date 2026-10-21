@@ -1,0 +1,26 @@
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Poppins");
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    font-family: "Poppins", "sans-seriff";
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title{
+    font-size: 3rem;
+    margin: 6vh;
+    border: 7px dashed rgb(1, 17, 160);
+    border-radius: 20px;
+    padding: 1vh 5vw;    
+}
