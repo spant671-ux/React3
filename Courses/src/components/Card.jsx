@@ -20,7 +20,7 @@ const Card = ({ course }) => {
         <img
           src={course.image.url}
           alt={course.image.alt}
-          className="w-full h-[200px] object-cover"
+          className="w-full h-50 object-cover"
         />
         <div className="absolute top-3 right-3">
           <button

@@ -35,7 +35,7 @@ function App() {
         category={category}
         setCategory={setCategory}
       />
-      <div className="w-full max-w-[1200px] px-4">
+      <div className="w-full max-w-300 px-4">
         {loading ? (
           <Spinner />
         ) : (
