@@ -1,17 +1,34 @@
+import { useState } from "react";
 import Card from "./Card";
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
 const Testimonials = (props) => {
   let reviews = props.reviews;
-  function leftShiftHandler(){}
 
-  function rightShiftHandler(){}
+  const [index, setIndex] = useState(0);
 
-  function surpriseHandler(){}
-  
+  function leftShiftHandler(){
+    if (index-1 < 0){
+      setIndex(reviews.length-1);
+    }
+    else setIndex(index-1);
+  }
+
+  function rightShiftHandler(){
+    if (index + 1 >= reviews.length){
+      setIndex(0);
+    }
+    else setIndex(index+1);
+  }
+
+  function surpriseHandler(){
+    let randomIndex = Math.floor(Math.random()*reviews.length);
+    setIndex(randomIndex);
+  }
+
   return (
     <div>
-      <Card review={reviews[0]} />
+      <Card review={reviews[index]} />
       <div className='flex text-3xl mt-5 gap-3 text-violet-400 font-bold mx-auto'>
         <button
         onClick={leftShiftHandler}
