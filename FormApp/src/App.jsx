@@ -18,7 +18,7 @@ function App() {
   //   setLastName(e.target.value);
   // }
 
-  const [formData, setFormData] = useState({firstName: "", lastName: "", email:"", comments:"", isVisible:true});
+  const [formData, setFormData] = useState({firstName: "", lastName: "", email:"", comments:"", isVisible:true, mode:""});
 
   function changeHandler(e){
     const {name, value, checked, type} = e.target
@@ -81,6 +81,30 @@ function App() {
         onChange={changeHandler}
         checked={formData.isVisible}
         />
+
+        <br/>
+
+        <label htmlFor='Online-Mode'>Am I Online?</label>
+        <input 
+        type="radio" 
+        name="mode"
+        onChange={changeHandler} 
+        value="Online-Mode" 
+        id="Online-Mode"
+        checked={formData.mode === "Online-Mode"}
+        />
+
+        <label htmlFor='Offline-Mode'>Am I Offline?</label>
+        <input 
+        type="radio" 
+        name="mode"
+        onChange={changeHandler} 
+        value="Offline-Mode" 
+        id="Offline-Mode"
+        checked={formData.mode === "Offline-Mode"}
+        />
+
+        
       </form>
     </div>
     </>
