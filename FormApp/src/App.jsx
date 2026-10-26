@@ -21,10 +21,11 @@ function App() {
   const [formData, setFormData] = useState({firstName: "", lastName: "", email:"", comments:"", isVisible:true});
 
   function changeHandler(e){
+    const {name, value, checked, type} = e.target
     setFormData(prevFormData => {
       return{
         ...prevFormData,
-        [e.target.name] : e.target.value
+        [name] : type === "checkbox" ? checked : value
       }
     });
   }
