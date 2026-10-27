@@ -18,7 +18,7 @@ function App() {
   //   setLastName(e.target.value);
   // }
 
-  const [formData, setFormData] = useState({firstName: "", lastName: "", email:"", comments:"", isVisible:true, mode:""});
+  const [formData, setFormData] = useState({firstName: "", lastName: "", email:"", comments:"", isVisible:true, mode:"", favCar:""});
 
   function changeHandler(e){
     const {name, value, checked, type} = e.target
@@ -30,10 +30,15 @@ function App() {
     });
   }
 
+  function submitHandler(e){
+    e.preventDefault;
+    console.log("Finally printing  all datas of form");
+  }
+
   return (
     <>
     <div className='App'>
-      <form>
+      <form onSubmit={submitHandler}>
         <input 
         type="text"
         placeholder='First Name'
@@ -84,7 +89,10 @@ function App() {
 
         <br/>
 
-        <label htmlFor='Online-Mode'>Am I Online?</label>
+        <fieldset>
+          <legend>Mode: </legend>
+
+          <label htmlFor='Online-Mode'>Am I Online?</label>
         <input 
         type="radio" 
         name="mode"
@@ -103,8 +111,24 @@ function App() {
         id="Offline-Mode"
         checked={formData.mode === "Offline-Mode"}
         />
+        </fieldset>
 
-        
+        <label htmlFor='favCar'>Your favourite car: </label>
+        <select 
+        onChange={changeHandler}
+        name = "favCar"
+        value={formData.favCar}
+        >
+          <option value="Scorpio">Scorpio</option>
+          <option value="Fortuner">Fortuner</option>
+          <option value="Ferrari">Ferrari</option>
+          <option value="Bugatti">Bugatti</option>
+        </select>
+
+        <br/>
+
+        <button>Submit</button>
+
       </form>
     </div>
     </>
