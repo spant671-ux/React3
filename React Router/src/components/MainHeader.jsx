@@ -4,7 +4,6 @@ const MainHeader = () => {
   return (
     <div>
         <Outlet />
-        Home Page
     </div>
   )
 }
