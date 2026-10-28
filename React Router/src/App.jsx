@@ -13,8 +13,8 @@ function App() {
     <>
       <div className='App'>
 
-        <nav>
-          <ul>
+        <nav className='bg-blue-400'>
+          <ul className='list flex flex-row justify-around'>
             <li>
               <NavLink to='/'>Home</NavLink>
             </li>
