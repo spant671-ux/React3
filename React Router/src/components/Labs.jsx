@@ -6,7 +6,7 @@ const Labs = () => {
 
   const clickHandler = () => {
     //move to about page
-    navigate('/about')
+    navigate('/')
   } 
   return (
     <div>
@@ -16,7 +16,7 @@ const Labs = () => {
         <button
         onClick={clickHandler}
         className=" flex justify-center align-middle rounded-md bg-indigo-600 px-4 py-2 font-medium text-white cursor-pointer hover:bg-indigo-700">
-          Move to About Page
+          Move to Home Page
         </button>
     </div>
   )
