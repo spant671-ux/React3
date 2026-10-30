@@ -68,7 +68,7 @@ const SignupForm = () => {
                             type="email"
                             onChange={changeHandler}
                             name='email'
-                            placeholder="Enter E-mail Addressd"
+                            placeholder="Enter Email Address"
                             value={formData.email}
                         />
                     </label>
