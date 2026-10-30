@@ -1,12 +1,16 @@
 import { useState } from "react"
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import toast from 'react-hot-toast'
+import { useNavigate } from "react-router-dom"
 
 
-const SignupForm = () => {
+const SignupForm = ({setIsLoggedIn}) => {
 
     const [formData, setFormData] = useState({ firstname: "", lastname: "", email: "", password: "", confirmPassword: "" })
 
     const [showPassword, setShowPassword] = useState(false)
+
+    const navigate = useNavigate();
 
     function changeHandler(e) {
         setFormData((prevData) => (
@@ -15,6 +19,23 @@ const SignupForm = () => {
                 [e.target.name]: e.target.value
             }
         ))
+    }
+
+    function submitHandler(e){
+        e.preventDefault();
+        if(formData.password != formData.confirmPassword){
+            toast.error("Passwords do not match")
+        }
+
+        setIsLoggedIn(true);
+        toast.success("Account created succesfully!")
+        const account = {
+            ...formData
+        }
+        console.log("Printing account data")
+        console.log(account)
+
+        navigate("/dashboard")
     }
 
     return (
@@ -29,7 +50,7 @@ const SignupForm = () => {
                 </button>
             </div>
 
-            <form>
+            <form onSubmit={submitHandler}>
 
                 <div>
 
