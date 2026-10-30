@@ -8,14 +8,14 @@ const Navbar = (props) => {
     let setIsLoggedIn = props.setIsLoggedIn;
 
   return (
-    <div className="flex justify-evenly">
+    <div className="flex justify-between items-center w-11/12 max-w-290 py-4 mx-auto">
 
         <Link to="/">
           <img src={logo} alt="Logo" width={160} height={32} loading="lazy"/>
         </Link>
 
         <nav>
-            <ul className="flex gap-3">
+            <ul className="flex gap-x-6 text-[rgb(164,175,188)]">
                 <li>
                     <Link to='/'>Home</Link>
                 </li>
@@ -28,20 +28,22 @@ const Navbar = (props) => {
             </ul>
         </nav>
 
-        <div className="flex ml-3 mr-3 gap-3">
+        <div className="flex items-center gap-x-4">
             { !isLoggedIn &&
                 <Link to='/login'>
-                    <button>Login</button>
+                    <button className="bg-[rgb(16,21,29)] text-[rgb(164,175,188)] py-2 px-3 rounded-lg border border-[rgb(16,22,30)]">Login</button>
                 </Link>
             }
             { !isLoggedIn &&
                 <Link to='/signup'>
-                    <button >Signup</button>
+                    <button className="bg-[rgb(16,21,29)] text-[rgb(164,175,188)] py-2 px-3 rounded-lg border border-[rgb(16,22,30)]">Sign Up</button>
                 </Link>
             }
             { isLoggedIn &&
                 <Link to='/'>
-                    <button onClick={() => {
+                    <button
+                    className="bg-[rgb(16,21,29)] text-[rgb(164,175,188)] py-2 px-3 rounded-lg border border-[rgb(16,22,30)]"
+                    onClick={() => {
                         setIsLoggedIn(false);
                         toast.success("Logged Out")
                     }}>Logout</button>
@@ -49,7 +51,7 @@ const Navbar = (props) => {
             }
             { isLoggedIn&&
                 <Link to='/dashboard'>
-                    <button>Dashboard</button>
+                    <button className="bg-[rgb(16,21,29)] text-[rgb(164,175,188)] py-2 px-3 rounded-lg border border-[rgb(16,22,30)]">Dashboard</button>
                 </Link>
             }
         </div>

@@ -13,7 +13,7 @@ function App() {
 
   return (
     <>
-    <div>
+    <div className='w-screen h-screen flex flex-col bg-[rgb(0,8,15)]'>
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 
       <Routes>
