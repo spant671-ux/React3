@@ -10,6 +10,8 @@ const SignupForm = ({setIsLoggedIn}) => {
 
     const [showPassword, setShowPassword] = useState(false)
 
+    const [accountType, setAccountType] = useState("student")
+
     const navigate = useNavigate();
 
     function changeHandler(e) {
@@ -41,21 +43,30 @@ const SignupForm = ({setIsLoggedIn}) => {
     return (
         <div>
 
-            <div>
-                <button>
+            <div className="flex p-1 gap-x-1 my-6 rounded-full max-w-max bg-[rgb(16,21,29)] text-[rgb(119,123,131)]">
+                <button 
+                className={`${accountType == 'student' ? 'text-[rgb(241,242,255)] bg-[rgb(0,8,15)]' : 'bg-transparent text-'} py-2 px-5 rounded-full transition-all duration-200`}
+                onClick={() => setAccountType('student')}
+                >
                     Student
                 </button>
-                <button>
+                <button
+                className={`${accountType == 'instructor' ? 'text-[rgb(241,242,255)] bg-[rgb(0,8,15)]' : 'bg-transparent text-'} py-2 px-5 rounded-full transition-all duration-200`}
+                onClick={() => setAccountType('instructor')}
+                >
                     Instructor
                 </button>
             </div>
 
-            <form onSubmit={submitHandler}>
+            <form onSubmit={submitHandler} >
 
-                <div>
+                <div className="flex gap-x-4 mt-2.5">
 
-                    <label>
-                        <p>First name<sup>*</sup></p>
+                    <label className="w-full">
+                        <p className="text-[0.875rem] text-[rgb(241,242,255)] mb-1 leading-5.5">
+                            First name
+                            <sup className="text-pink-400">*</sup>
+                        </p>
                         <input
                             required
                             type="text"
@@ -63,11 +74,15 @@ const SignupForm = ({setIsLoggedIn}) => {
                             name='firstname'
                             placeholder="Enter First Name"
                             value={formData.firstname}
+                            className="bg-[rgb(16,21,29)] text-[rgb(115,120,127)] rounded-lg w-full p-3"
                         />
                     </label>
 
-                    <label>
-                        <p>Last name<sup>*</sup></p>
+                    <label className="w-full">
+                        <p className="text-[0.875rem] text-[rgb(241,242,255)] mb-1 leading-5.5">
+                            Last name
+                            <sup className="text-pink-400">*</sup>
+                        </p>
                         <input
                             required
                             type="text"
@@ -75,15 +90,19 @@ const SignupForm = ({setIsLoggedIn}) => {
                             name='lastname'
                             placeholder="Enter Last Name"
                             value={formData.lastname}
+                            className="bg-[rgb(16,21,29)] text-[rgb(115,120,127)] rounded-lg w-full p-3"
                         />
                     </label>
 
                 </div>
 
-                <div>
+                <div className="flex gap-x-4 mt-2.5">
                     
-                    <label>
-                        <p>Email address<sup>*</sup></p>
+                    <label className="w-full">
+                        <p className="text-[0.875rem] text-[rgb(241,242,255)] mb-1 leading-5.5">
+                            Email address
+                            <sup className="text-pink-400">*</sup>
+                        </p>
                         <input
                             required
                             type="email"
@@ -91,13 +110,17 @@ const SignupForm = ({setIsLoggedIn}) => {
                             name='email'
                             placeholder="Enter Email Address"
                             value={formData.email}
+                            className="bg-[rgb(16,21,29)] text-[rgb(115,120,127)] rounded-lg w-full p-3"
                         />
                     </label>
                 </div>
 
-                <div>
-                     <label>
-                        <p>Create Password<sup>*</sup></p>
+                <div className="flex gap-x-4 w-full mt-2.5">
+                     <label className="relative w-full">
+                        <p className="text-[0.875rem] text-[rgb(241,242,255)] mb-1 leading-5.5">
+                            Create Password
+                            <sup className="text-pink-400">*</sup>
+                        </p>
                         <input
                             required
                             type={showPassword  ? ("text") : ("password")}
@@ -105,14 +128,21 @@ const SignupForm = ({setIsLoggedIn}) => {
                             name='password'
                             placeholder="Enter password"
                             value={formData.password}
+                            className="bg-[rgb(16,21,29)] text-[rgb(115,120,127)] rounded-lg w-full p-3"
                         />
-                        <span onClick={() => setShowPassword((prev) => !prev)}>
-                            {showPassword ? (<AiOutlineEyeInvisible/>) : (<AiOutlineEye/>)}
+                        <span onClick={() => setShowPassword((prev) => !prev)}
+                            className="absolute right-3 top-9.5 cursor-pointer">
+                            {showPassword ? 
+                            (<AiOutlineEyeInvisible fontSize={24} fill='#AFB2BF'/>) : 
+                            (<AiOutlineEye fontSize={24} fill='#AFB2BF'/>)}
                         </span>
                     </label> 
 
-                    <label>
-                        <p>Confirm Password<sup>*</sup></p>
+                    <label className="relative w-full">
+                        <p className="text-[0.875rem] text-[rgb(241,242,255)] mb-1 leading-5.5">
+                            Confirm Password
+                            <sup className="text-pink-400">*</sup>
+                        </p>
                         <input
                             required
                             type={showPassword  ? ("text") : ("password")}
@@ -120,15 +150,19 @@ const SignupForm = ({setIsLoggedIn}) => {
                             name='confirmPassword'
                             placeholder="Confirm password"
                             value={formData.confirmPassword}
+                            className="bg-[rgb(16,21,29)] text-[rgb(115,120,127)] rounded-lg w-full p-3"
                         />
-                        <span onClick={() => setShowPassword((prev) => !prev)}>
-                            {showPassword ? (<AiOutlineEyeInvisible/>) : (<AiOutlineEye/>)}
+                        <span onClick={() => setShowPassword((prev) => !prev)}
+                            className="absolute right-3 top-9.5 cursor-pointer">
+                            {showPassword ? 
+                            (<AiOutlineEyeInvisible fontSize={24} fill='#AFB2BF'/>) : 
+                            (<AiOutlineEye fontSize={24} fill='#AFB2BF'/>)}
                         </span>
                     </label>
 
                 </div>
 
-                <button>
+                <button className="bg-[rgb(201,166,10)] rounded-lg font-medium text-[rgb(0,8,15)] px-3 py-2 mt-6 w-full">
                     Create Account 
                 </button>
 
