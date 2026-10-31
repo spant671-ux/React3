@@ -9,6 +9,7 @@ const SignupForm = ({setIsLoggedIn}) => {
     const [formData, setFormData] = useState({ firstname: "", lastname: "", email: "", password: "", confirmPassword: "" })
 
     const [showPassword, setShowPassword] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
     const [accountType, setAccountType] = useState("student")
 
@@ -31,11 +32,16 @@ const SignupForm = ({setIsLoggedIn}) => {
 
         setIsLoggedIn(true);
         toast.success("Account created succesfully!")
-        const account = {
+        const accountData = {
             ...formData
         }
-        console.log("Printing account data")
-        console.log(account)
+
+        const finalData = {
+            ...accountData,
+            accountType
+        }
+        console.log("Printing final account data ")
+        console.log(finalData)
 
         navigate("/dashboard")
     }
@@ -145,16 +151,16 @@ const SignupForm = ({setIsLoggedIn}) => {
                         </p>
                         <input
                             required
-                            type={showPassword  ? ("text") : ("password")}
+                            type={showConfirmPassword  ? ("text") : ("password")}
                             onChange={changeHandler}
                             name='confirmPassword'
                             placeholder="Confirm password"
                             value={formData.confirmPassword}
                             className="bg-[rgb(16,21,29)] text-[rgb(115,120,127)] rounded-lg w-full p-3"
                         />
-                        <span onClick={() => setShowPassword((prev) => !prev)}
+                        <span onClick={() => setShowConfirmPassword((prev) => !prev)}
                             className="absolute right-3 top-9.5 cursor-pointer">
-                            {showPassword ? 
+                            {showConfirmPassword ? 
                             (<AiOutlineEyeInvisible fontSize={24} fill='#AFB2BF'/>) : 
                             (<AiOutlineEye fontSize={24} fill='#AFB2BF'/>)}
                         </span>
