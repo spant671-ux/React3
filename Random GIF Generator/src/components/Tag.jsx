@@ -12,7 +12,7 @@ const Tag = () => {
 
     async function fetchData() {
         setLoading(true);
-        const url = `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}`;
+        const url = `https://api.giphy.com/v1/gifs/random?api_key=${API_KEY}&tag=${tag}`;
         const { data } = await axios.get(url);
         const imageSource = data.data.images.downsized_large.url;
         setGif(imageSource);
@@ -34,7 +34,7 @@ const Tag = () => {
                 Random GIF
             </h1>
             {
-            loading ? (<Spinner />) : (<img src={gif} width="450" />)
+            loading ? (<Spinner />) : (<img src={gif} width={450} />)
             }
 
             <input
