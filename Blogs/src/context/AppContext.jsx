@@ -3,7 +3,7 @@ import { baseUrl } from "../baseUrl";
 
 export const AppContext = createContext();
 
-function AppContextProvider({children}){
+export default function AppContextProvider({children}){
     const [loading, setLoading] = useState(false);
     const [posts, setPosts] = useState([]);
     const [page, setPage] = useState(1);
@@ -29,6 +29,11 @@ function AppContextProvider({children}){
         setLoading(false);
     }
 
+    function handlePageChange(){
+        setPage(page);
+        fetchBlogPosts(page);
+    }
+
     const value = {
         posts,
         setPosts,
@@ -37,7 +42,9 @@ function AppContextProvider({children}){
         page,
         setPage,
         totalPages,
-        setTotalPages
+        setTotalPages,
+        fetchBlogPosts,
+        handlePageChange
     }
 
     return <AppContext.Provider value={value}>
